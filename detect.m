@@ -30,5 +30,3 @@ function bhat = detect(r)
     bhat(2:2:end) = imag(r) < 0;
 end
 
-
-

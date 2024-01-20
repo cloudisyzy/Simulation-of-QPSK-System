@@ -22,8 +22,8 @@ Q = 8;                              % Number of samples per symbol in baseband
 % Define the pulse-shape used in the transmitter. 
 % Pick one of the pulse shapes below or experiemnt
 % with a pulse of your own.
-% pulse_shape = ones(1, Q);
-pulse_shape = root_raised_cosine(Q);
+pulse_shape = ones(1, Q);
+%pulse_shape = root_raised_cosine(Q);
 
 % Matched filter impulse response. 
 mf_pulse_shape = fliplr(pulse_shape);
@@ -83,7 +83,7 @@ for snr_point = 1:length(EbN0_db)
     % parameters. Use sensible values (hint: plot the correlation
     % function used for syncing)! 
     t_start=1+Q*nr_guard_bits/2;
-    t_end=t_start+50;
+    t_end=t_start + 7;
     t_samp = sync(mf, b_train, Q, t_start, t_end);
     
     % Down sampling. t_samp is the first sample, the remaining samples are all

@@ -1,4 +1,3 @@
-function phihat = phase_estimation(r, b_train)
 % phihat = phase_estimation(r, b_train)
 %
 % Phase estimator using the training sequence. The phase estimate is
@@ -13,5 +12,20 @@ function phihat = phase_estimation(r, b_train)
 %
 % Output:
 %   phihat     = estimated phase
+
+function phihat = phase_estimation(r, b_train)
+    % Modulate the training sequence
+    d_train = qpsk(b_train);
+    % Compute # of symbols in the training sequence
+    N = length(d_train);
+    % Extract the corresponding part within the received signal
+    r_train = r(1:N);
+    % Compute the phase difference between received and expected symbols,
+    % based on formula (30)
+    phase_diff = angle(d_train .* conj(r_train));
+    % Take the Average value
+    phihat = mean(phase_diff);
+end
+
 
 
