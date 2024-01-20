@@ -1,3 +1,4 @@
+function d = qpsk(b)
 % d = qpsk(b)
 %
 % Map the bits to be transmitted into QPSK symbols using Gray coding. The
@@ -27,14 +28,27 @@
 % Output:
 %   d = complex-valued QPSK symbols
 
-function d = qpsk(b)
-    % Compute the number of symbols
+    % Number of symbols
     N = length(b)/2;
-    % Reshape b into two rows, for convenience
+
+    % Reshape b into two rows
     b = reshape(b, 2, N);
-    % Map bits to QPSK symbols by Gray Mapping, boosted using the
-    % sign of real and imaginary parts 
-    d = ((1 - 2*b(1,:)) + 1j*(1 - 2*b(2,:)))/sqrt(2);
+
+    % Initialize the output symbol array
+    d = zeros(1, N);
+
+    % Gray coding and symbol assignment
+    for i = 1:N
+        if b(1, i) == 0 && b(2, i) == 0
+            d(i) = (1 + 1j)/sqrt(2); % 00
+        elseif b(1, i) == 0 && b(2, i) == 1
+            d(i) = (-1 + 1j)/sqrt(2); % 01
+        elseif b(1, i) == 1 && b(2, i) == 1
+            d(i) = (-1 - 1j)/sqrt(2); % 11
+        else
+            d(i) = (1 - 1j)/sqrt(2); % 10
+        end
+    end
 end
 
 

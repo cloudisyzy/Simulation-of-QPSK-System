@@ -11,6 +11,6 @@ function b = random_data(nr_data_bits)
 
 % History:
 %   2000-06-26  written /Stefan Parkvall
-%   2001-10-21  modified /George Jöngren
+%   2001-10-21  modified /George Jgren
 
 b = (rand(1, nr_data_bits) > .5);

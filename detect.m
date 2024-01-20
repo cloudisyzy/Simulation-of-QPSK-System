@@ -1,4 +1,3 @@
-function bhat = detect(r)
 % bhat = detect(r)
 %
 % Computes the received bits given a received sequence of (phase-corrected)
@@ -20,5 +19,16 @@ function bhat = detect(r)
 %
 % Output:
 %   bhat  = bits {0,1} corresponding to the QPSK symbols
+
+function bhat = detect(r)
+    % Compute # of symbols
+    N = length(r);
+    % Initialize the bit set
+    bhat = zeros(1, 2*N);
+    % Direct mapping using sign of real and imaginary parts
+    bhat(1:2:end) = real(r) < 0; 
+    bhat(2:2:end) = imag(r) < 0;
+end
+
 
 

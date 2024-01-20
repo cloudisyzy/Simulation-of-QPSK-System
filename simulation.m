@@ -22,8 +22,8 @@ Q = 8;                              % Number of samples per symbol in baseband
 % Define the pulse-shape used in the transmitter. 
 % Pick one of the pulse shapes below or experiemnt
 % with a pulse of your own.
-pulse_shape = ones(1, Q);
-%pulse_shape = root_raised_cosine(Q);
+% pulse_shape = ones(1, Q);
+pulse_shape = root_raised_cosine(Q);
 
 % Matched filter impulse response. 
 mf_pulse_shape = fliplr(pulse_shape);

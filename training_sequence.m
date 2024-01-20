@@ -13,6 +13,6 @@ function b = training_sequence(nr_training_bits)
 %
 % History:
 %   2000-09-28  written /Stefan Parkvall
-%   2001-10-21  modified / George Jöngren
+%   2001-10-21  modified / George Jgren
 
 b = (rand(1, nr_training_bits) > .5);
