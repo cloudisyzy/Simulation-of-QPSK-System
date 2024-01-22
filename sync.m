@@ -34,10 +34,15 @@ function t_samp = sync(mf, b_train, Q, t_start, t_end)
     end
     [max_val, arg_max] = max(abs(corr));
     t_samp = t_start + (arg_max - 1); % Also because matlab index starts at 1
-    
+%     
 %     stem(t_samp, max_val, "b")
-%     sprintf("argmax = %d", argmax-1)
+%     sprintf("argmax = %d", arg_max-1)
 %     hold on
+
+%     stem(0:length(corr)-1, abs(corr),"filled")
+%     xlabel("k")
+%     ylabel("Correlation R(k)")
+%     set(gca, 'YTickLabel', {});
 end
 
 
