@@ -111,6 +111,7 @@ for snr_point = 1:length(EbN0_db)
   % Next Eb/No value.
 end
 
+% BER = nr_errors / nr_data_bits / nr_blocks;
 psd_rect = pwelch(tx, blackman(256), 128, 1024);
 figure;
 plot(linspace(0,1,length(psd_rect)), 10*log10(psd_rect))
@@ -208,6 +209,7 @@ for snr_point = 1:length(EbN0_db)
   % Next Eb/No value.
 end
 
+BER = nr_errors / nr_data_bits / nr_blocks;
 psd_rrc = pwelch(tx, blackman(256), 128, 1024);
 figure;
 plot(linspace(0,1,length(psd_rrc)), 10*log10(psd_rrc))
